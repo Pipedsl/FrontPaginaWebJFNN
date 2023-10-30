@@ -1,0 +1,160 @@
+<app-spinner *ngIf="loading$ | async"></app-spinner>
+
+<mat-toolbar color="secondary">
+  <span>Cotizar</span>
+</mat-toolbar>
+
+<section fxLayoutAlign="center">
+  <mat-card>
+    <form fxLayout="column"
+    fxLayoutAlign="center center"
+    #f = "ngForm"
+    (ngSubmit)="registrarCotizacion(f)"
+    fxLayoutGap="10px"
+    >
+
+      <mat-form-field>
+        <mat-label>Ingrese Nombre</mat-label>
+        <input
+        type="text"
+        ngModel
+        name="nombre"
+        required
+        placeholder="Ingrese Nombre"
+        matInput
+        />
+        <mat-error>Debe ingresar nombre</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese Email</mat-label>
+        <input
+        type="email"
+        ngModel
+        name="email"
+        required
+        placeholder="Ingrese Email"
+        matInput
+        />
+        <mat-error>Debe ingresar email</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese Teléfono</mat-label>
+        <input
+        type="text"
+        ngModel
+        name="telefono"
+        required
+        placeholder="Ingrese Teléfono"
+        matInput
+        />
+        <mat-error>Debe ingresar teléfono</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese Rut</mat-label>
+        <input
+        type="text"
+        ngModel
+        name="rut"
+        required
+        placeholder="Ingrese Rut"
+        matInput
+        />
+        <mat-error>Debe ingresar rut</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese Marca</mat-label>
+        <input
+        type="text"
+        ngModel
+        name="marca"
+        required
+        placeholder="Ingrese Marca"
+        matInput
+        />
+        <mat-error>Debe ingresar marca</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese Modelo</mat-label>
+        <input
+        type="text"
+        ngModel
+        name="modelo"
+        required
+        placeholder="Ingrese Modelo"
+        matInput
+        />
+        <mat-error>Debe ingresar modelo</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese Año</mat-label>
+        <input
+        type="text"
+        ngModel
+        name="año"
+        required
+        placeholder="Ingrese Año"
+        matInput
+        />
+        <mat-error>Debe ingresar año</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese Vin o Chasis</mat-label>
+        <input
+        type="text"
+        ngModel
+        name="chasis"
+        required
+        placeholder="Ingrese Vin o Chasis"
+        matInput
+        />
+        <mat-error>Debe ingresar vin o chasis</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese Dirección</mat-label>
+        <input
+        type="text"
+        ngModel
+        name="direccion"
+        required
+        placeholder="Ingrese Dirección"
+        matInput
+        />
+        <mat-error>Debe ingresar dirección</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese Mensaje</mat-label>
+        <textarea
+        ngModel
+        name="mensaje"
+        required
+        placeholder="Ingrese Mensaje"
+        matInput
+        ></textarea>
+        <mat-error>Debe ingresar mensaje</mat-error>
+      </mat-form-field>
+
+      <div class="personal__photo">
+        <div class="photo">
+          <app-entity-photo class="photo__img" [photoURL]="photoLoaded"></app-entity-photo>
+          <button mat-button appFilesUpload (changed)="onFileChanged($event)">
+            <mat-icon>upload</mat-icon>
+            Subir Imagen
+          </button>
+        </div>
+      </div>
+
+      <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Cotizar</button>
+
+    </form>
+  </mat-card>
+
+</section>

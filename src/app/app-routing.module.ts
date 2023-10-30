@@ -6,6 +6,14 @@ const routes: Routes = [
     path: '',
     children: [
       {
+        path: 'contacto',
+        loadChildren: () => import('./pages/contacto/contacto.module').then(m=>m.ContactoModule)
+      },
+      {
+        path: 'cotizacion',
+        loadChildren: () => import('./pages/cotizacion/cotizacion.module').then(m=>m.CotizacionModule)
+      },
+      {
         path: 'auth',
         loadChildren: () => import ('./pages/auth/auth.module').then(m=>m.AuthModule)
       },

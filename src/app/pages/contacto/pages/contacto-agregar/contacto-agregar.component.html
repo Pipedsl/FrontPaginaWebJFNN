@@ -1,0 +1,93 @@
+<app-spinner *ngIf="loading$ | async"></app-spinner>
+
+<mat-toolbar color="secondary">
+  <span>Contacto</span>
+</mat-toolbar>
+
+<section fxLayoutAlign="center">
+  <mat-card>
+    <form fxLayout="column"
+    fxLayoutAlign="center center"
+    #f = "ngForm"
+    (ngSubmit)="registrarCotizacion(f)"
+    fxLayoutGap="10px"
+    >
+
+        <!-- div para subir fotos -->
+      <!-- <div class="personal_photo">
+        <div class="photo">
+          <app-entity-photo class="photo__img" [photoURL]="photoLoaded"></app-entity-photo>
+          <button mat-button appFilesUpload (changed)="onFilesChanged($event)">
+            <mat-icon>upload</mat-icon>
+            Subir Foto
+          </button>
+        </div>
+      </div> -->
+
+      <mat-form-field>
+        <mat-label> Ingrese Nombre</mat-label>
+        <input type="text"
+        ngModel
+        name="nombre"
+        required
+        placeholder="Ingrese Nombre"
+        matInput
+        />
+        <mat-error>Debe ingresar un nombre</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label> Ingrese Email</mat-label>
+        <input type="email"
+        ngModel
+        name="email"
+        required
+        placeholder="Ingrese Email"
+        matInput
+        />
+        <mat-error>Debe ingresar un email</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label> Ingrese Teléfono</mat-label>
+        <input type="text"
+        ngModel
+        name="telefono"
+        required
+        placeholder="Ingrese Teléfono"
+        matInput
+        />
+        <mat-error>Debe ingresar un teléfono</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label> Ingrese Rut</mat-label>
+        <input type="text"
+        ngModel
+        name="rut"
+        required
+        placeholder="Ingrese Rut"
+        matInput
+        />
+        <mat-error>Debe ingresar un rut</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label> Ingrese Mensaje</mat-label>
+        <textarea
+        ngModel
+        name="mensaje"
+        required
+        placeholder="Ingrese Mensaje"
+        matInput
+        ></textarea>
+        <mat-error>Debe ingresar un mensaje</mat-error>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Enviar</button>
+
+
+    </form>
+  </mat-card>
+
+</section>

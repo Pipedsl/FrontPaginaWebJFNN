@@ -6,13 +6,15 @@ export interface UserState {
   id: string | null;
   loading: boolean | null;
   error: string | null;
+  email: string | null;
 }
 
 const initialState : UserState = {
   entity: null,
   id: null,
   loading: null,
-  error: null
+  error: null,
+  email: null,
 }
 
 export function reducer(state = initialState, action: fromActions.All | any) : UserState {

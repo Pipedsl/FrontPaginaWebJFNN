@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
+import { SpinnerModule } from '@app/shared';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatCardModule,
     FlexLayoutModule,
-    MatInputModule
+    MatInputModule,
+    SpinnerModule
   ]
 })
 export class RegistrationModule { }

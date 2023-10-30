@@ -1,3 +1,9 @@
 @import "@angular/material/prebuilt-themes/pink-bluegrey.css";
 
 @import "styles/main.scss";
+
+/* Importing Bootstrap SCSS file. */
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";

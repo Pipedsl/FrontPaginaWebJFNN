@@ -12,7 +12,7 @@ import { environment } from '@src/environments/environment';
 type Action = fromActions.All;
 
 @Injectable()
-export class userEffects {
+export class UserEffects {
   constructor(
     private httpClient: HttpClient,
     private actions: Actions,
@@ -25,8 +25,7 @@ export class userEffects {
       ofType(fromActions.Types.SIGN_UP_EMAIL),
       map((action: fromActions.SignUpEmail) => action.user),
       switchMap((userData) =>
-        this.httpClient
-          .post<UserResponse>(`${environment.url}account/register/`, userData)
+        this.httpClient.post<UserResponse>(`${environment.url}api/athentication/sign-up`, userData)
           .pipe(
             tap((response: UserResponse) => {
               localStorage.setItem('token', response.token);
@@ -53,8 +52,7 @@ export class userEffects {
       ofType(fromActions.Types.SIGNIN_IN_EMAIL),
       map((action: fromActions.SignInEmail) => action.credentials),
       switchMap((userData) =>
-        this.httpClient
-          .post<UserResponse>(`${environment.url}account/login-app/`, userData)
+        this.httpClient.post<UserResponse>(`${environment.url}api/authentication/sign-in`, userData)
           .pipe(
             tap((response: UserResponse) => {
               localStorage.setItem('token', response.token);
@@ -83,7 +81,7 @@ export class userEffects {
       switchMap((token) => {
         if(token){
 
-          return this.httpClient.get<UserResponse>(`${environment.url}account/session/`,)
+          return this.httpClient.get<UserResponse>(`${environment.url}api/user`,)
           .pipe(
             tap((response: UserResponse) => {
               console.log('data del usuario en sesion que ciente del servidore' , response);

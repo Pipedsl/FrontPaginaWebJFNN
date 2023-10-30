@@ -14,3 +14,46 @@ a:hover,
 a:active {
   color: #DBCDE6;
 }
+
+.container {
+  height: 100vh;
+  margin-bottom: 0px; // Ajusta el margen inferior según sea necesario
+  display: flex;
+  margin-bottom: 0px;
+}
+
+.carousel {
+  height: calc(100% - 20px); // Ajusta la altura del carrusel considerando el margen inferior del contenedor
+  display: flex;
+  margin-bottom: 0px;
+}
+
+.carousel-slide{
+  display: flex;
+  margin-bottom: 0px;
+}
+
+.carousel-inner{
+  display: flex;
+  margin-bottom: 0px;
+}
+
+#carousel1{
+  display: flex;
+  margin-bottom: 0px;
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+// Media query para hacer el carrusel responsive
+@media (max-width: 768px) {
+  .carousel-image {
+    max-height: 200px;
+  }
+}
+
