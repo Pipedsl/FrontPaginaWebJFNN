@@ -4,7 +4,26 @@ import { CotizacionCreateRequest, CotizacionResponse } from "./save.models";
 export enum Types {
   CREATE = '[Cotizacion] Create: Start',
   CREATE_SUCCESS = '[Cotizacion] Create: Succcess',
-  CREATE_ERROR = '[Cotizacion] Create: Erro'
+  CREATE_ERROR = '[Cotizacion] Create: Error',
+
+  READ = '[Cotizacion] Read',
+  READ_SUCCESS = '[Cotizacion] Read:Success',
+  READ_ERROR = '[Cotizacion] Read:Error',
+}
+
+export class Read implements Action {
+  readonly type = Types.READ;
+  constructor(){}
+}
+
+export class ReadSuccess implements Action {
+  readonly type = Types.READ_SUCCESS;
+  constructor(public cotizaciones: CotizacionResponse[]){}
+}
+
+export class ReadError implements Action {
+  readonly type = Types.READ_ERROR;
+  constructor(public error: string){}
 }
 
 export class Create implements Action {
@@ -22,6 +41,10 @@ export class CreateError implements Action {
   constructor(public error: string){}
 }
 
-export type All = Create | CreateSuccess | CreateError;
+export type All =
+Read
+| ReadSuccess
+| ReadError
+|Create | CreateSuccess | CreateError;
 
 

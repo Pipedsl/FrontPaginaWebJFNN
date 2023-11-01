@@ -13,3 +13,8 @@ export const getLoading = createSelector(
   getListState,
   (state: ListState) => state.loading
 )
+
+export const getContactos = createSelector(
+  getListState,
+  (state: ListState) => state.contactos
+)

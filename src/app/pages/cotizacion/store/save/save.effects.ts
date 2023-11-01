@@ -15,15 +15,29 @@ type Action = fromActions.All;
 export class SaveEffects {
 
   constructor(
-    private action: Actions,
+    private actions: Actions,
     private httpClient: HttpClient,
     private router: Router,
     private notification: NotificationService
   ){}
 
+  read: Observable<Action> = createEffect( () =>
+  this.actions.pipe(
+    ofType(fromActions.Types.READ),
+    switchMap( () =>
+    this.httpClient.get<CotizacionResponse[]>(`${environment.url}gateway/cotizacion`)
+    .pipe(
+      delay(1000),
+      map((cotizaciones: CotizacionResponse[])=> new fromActions.ReadSuccess(cotizaciones) ),
+      catchError(err => of(new fromActions.ReadError(err.message)))
+    )
+    )
+  )
+  );
+
 
   create: Observable<Action> = createEffect( () =>
-    this.action.pipe(
+    this.actions.pipe(
       ofType(fromActions.Types.CREATE),
       map((action: fromActions.Create) => action.cotizacion),
       switchMap( (request: CotizacionCreateRequest) =>

@@ -7,7 +7,7 @@ export interface Cotizacion {
   rut: String;
   marca: String;
   modelo: String;
-  año: String;
+  anio: String;
   chasis: String;
   direccion: String;
   mensaje: String;

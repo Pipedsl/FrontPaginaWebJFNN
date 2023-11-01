@@ -5,7 +5,26 @@ import { ContactoCreateRequest, ContactoResponse } from "./save.models";
 export enum Types {
   CREATE = '[Contacto] Create: Start',
   CREATE_SUCCESS = '[Contacto] Create: Succcess',
-  CREATE_ERROR = '[Contacto] Create: Erro'
+  CREATE_ERROR = '[Contacto] Create: Error',
+
+  READ = '[Contacto] Read',
+  READ_SUCCESS = '[Contacto] Read:Success',
+  READ_ERROR = '[Contacto] Read:Error',
+}
+
+export class Read implements Action{
+  readonly type = Types.READ;
+  constructor(){}
+}
+
+export class ReadSuccess implements Action{
+  readonly type = Types.READ_SUCCESS;
+  constructor(public contactos: ContactoResponse[]){}
+}
+
+export class ReadError implements Action {
+  readonly type = Types.READ_ERROR;
+  constructor(public error: string){}
 }
 
 export class Create implements Action {
@@ -23,4 +42,8 @@ export class CreateError implements Action {
   constructor(public error: string){}
 }
 
-export type All = Create | CreateSuccess | CreateError;
+export type All =
+Read
+| ReadSuccess
+| ReadError
+|Create | CreateSuccess | CreateError;

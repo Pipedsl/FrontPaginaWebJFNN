@@ -32,7 +32,7 @@ export class CotizacionAgregarComponent implements OnInit{
         rut : form.value.rut,
         marca : form.value.marca,
         modelo : form.value.modelo,
-        año : form.value.año,
+        anio : form.value.anio,
         chasis : form.value.chasis,
         direccion: form.value.direccion,
         mensaje : form.value.mensaje,

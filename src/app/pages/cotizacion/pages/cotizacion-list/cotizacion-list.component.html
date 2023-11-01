@@ -1,1 +1,36 @@
-<p>cotizacion-list works!</p>
+<app-spinner *ngIf="loading$ | async"></app-spinner>
+
+<section class="container">
+  <ul class="cards" *ngIf="cotizaciones$ | async as cotizaciones">
+
+    <li class="cards__item" *ngFor="let cotizacion of cotizaciones">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{cotizacion.nombre}}
+          </mat-card-title>
+          <mat-card-subtitle>Marca {{cotizacion.marca}} Modelo {{cotizacion.modelo}} Año {{cotizacion.anio}}</mat-card-subtitle>
+          <!-- modificar segun gusto -->
+        </mat-card-header>
+        <img mat-card-image src="{{cotizacion.foto ? cotizacion.foto : fotoDefault}}"
+        alt="{{cotizacion.nombre}}">
+
+        <mat-card-content>
+          <p>
+            {{cotizacion.mensaje}}
+          </p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-button >Responder</button>
+          <button mat-button >Eliminar</button>
+        </mat-card-actions>
+
+      </mat-card>
+
+    </li>
+
+  </ul>
+
+
+</section>
