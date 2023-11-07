@@ -25,7 +25,7 @@ export class UserEffects {
       ofType(fromActions.Types.SIGN_UP_EMAIL),
       map((action: fromActions.SignUpEmail) => action.user),
       switchMap((userData) =>
-        this.httpClient.post<UserResponse>(`${environment.url}api/athentication/sign-up`, userData)
+        this.httpClient.post<UserResponse>(`${environment.url}api/authentication/sign-up`, userData)
           .pipe(
             tap((response: UserResponse) => {
               localStorage.setItem('token', response.token);
