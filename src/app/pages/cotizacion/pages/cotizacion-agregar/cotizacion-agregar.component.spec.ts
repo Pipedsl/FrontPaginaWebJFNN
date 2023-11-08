@@ -6,10 +6,12 @@ describe('CotizacionAgregarComponent', () => {
   let component: CotizacionAgregarComponent;
   let fixture: ComponentFixture<CotizacionAgregarComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [CotizacionAgregarComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ CotizacionAgregarComponent ]
+    })
+    .compileComponents();
+
     fixture = TestBed.createComponent(CotizacionAgregarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

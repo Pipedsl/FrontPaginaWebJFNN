@@ -20,13 +20,15 @@ import { SpinnerModule } from '@app/shared';
   imports: [
     CommonModule,
     RegistrationRoutingModule,
+
     MatFormFieldModule,
     MatButtonModule,
     FormsModule,
+
     MatIconModule,
+    MatInputModule,
     MatCardModule,
     FlexLayoutModule,
-    MatInputModule,
     SpinnerModule
   ]
 })

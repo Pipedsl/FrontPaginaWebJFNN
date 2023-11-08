@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
 import { SpinnerModule } from '@app/shared/indicators';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,11 +24,13 @@ import { SpinnerModule } from '@app/shared/indicators';
     MatFormFieldModule,
     MatButtonModule,
     FormsModule,
+
     MatIconModule,
     MatCardModule,
     FlexLayoutModule,
     MatInputModule,
-    SpinnerModule
+    SpinnerModule,
+    HttpClientModule
   ]
 })
 export class LoginModule { }

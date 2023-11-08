@@ -14,17 +14,17 @@ type Action = fromActions.All;
 @Injectable()
 export class UserEffects {
   constructor(
-    private httpClient: HttpClient,
     private actions: Actions,
-    private notification: NotificationService,
-    private router: Router
+    private router: Router,
+    private httpClient: HttpClient,
+    private notification: NotificationService
   ) {}
 
   signUpEmail: Observable<Action> = createEffect(() =>
     this.actions.pipe(
       ofType(fromActions.Types.SIGN_UP_EMAIL),
       map((action: fromActions.SignUpEmail) => action.user),
-      switchMap((userData) =>
+      switchMap(userData =>
         this.httpClient.post<UserResponse>(`${environment.url}api/authentication/sign-up`, userData)
           .pipe(
             tap((response: UserResponse) => {
@@ -51,8 +51,8 @@ export class UserEffects {
     this.actions.pipe(
       ofType(fromActions.Types.SIGNIN_IN_EMAIL),
       map((action: fromActions.SignInEmail) => action.credentials),
-      switchMap((userData) =>
-        this.httpClient.post<UserResponse>(`${environment.url}api/authentication/sign-in`, userData)
+      switchMap(credentials =>
+        this.httpClient.post<UserResponse>(`${environment.url}api/authentication/sign-in`, credentials)
           .pipe(
             tap((response: UserResponse) => {
               localStorage.setItem('token', response.token);
@@ -65,7 +65,7 @@ export class UserEffects {
                   response || null
                 )
             ),
-            catchError((err) => {
+            catchError(err => {
               this.notification.error('Las credenciales son incorrectas');
               return of(new fromActions.SignInEmailError(err.message));
             })
@@ -78,19 +78,17 @@ export class UserEffects {
     this.actions.pipe(
       ofType(fromActions.Types.INIT),
       switchMap(async () => localStorage.getItem('token')),
-      switchMap((token) => {
+      switchMap(token => {
         if(token){
 
           return this.httpClient.get<UserResponse>(`${environment.url}api/user`,)
           .pipe(
-            tap((response: UserResponse) => {
-              console.log('data del usuario en sesion que ciente del servidore' , response);
+            tap((user: UserResponse) => {
+              console.log('data del usuario en sesion que viene del servidor =>', user);
             }),
             map(
-              (response: UserResponse) => new fromActions.InitAuthorized(response.email, response || null )),
-            catchError((err) => {
-              return of(new fromActions.InitError(err.message));
-            })
+              (user: UserResponse) => new fromActions.InitAuthorized(user.email, user || null )),
+            catchError(err => of(new fromActions.InitError(err.message)))
           )
         }else{
           return of(new fromActions.InitUnauthorized());

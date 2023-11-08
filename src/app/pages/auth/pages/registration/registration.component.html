@@ -28,11 +28,11 @@
           type="text"
           matInput
           placeholder="Ingrese Apellidos"
-          name="apellido"
+          name="apellidos"
           ngModel
           required
         />
-        <mat-error>Debe ingresar un Apellido</mat-error>
+        <mat-error>Debe ingresar los apellidos</mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -70,8 +70,14 @@
           name="email"
           ngModel
           required
+          #emailInput="ngModel"
         />
-        <mat-error>Debe ingresar un E-Mail</mat-error>
+        <mat-error *ngIf="emailInput.hasError('required')"
+        >El email no puede estar en blanco</mat-error
+        >
+        <mat-error *ngIf="!emailInput.hasError('required')"
+        >El email es invalido</mat-error
+        >
       </mat-form-field>
 
       <mat-form-field>
@@ -102,7 +108,7 @@
         <mat-error>El Password debe tener más de 7 caracteres</mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit">Enviar</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="f.invalid">Enviar</button>
     </form>
   </mat-card>
 </section>

@@ -41,13 +41,13 @@ const StoreDevTools = !environment.production ? StoreDevtoolsModule.instrument({
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    MenuListComponent
+    MenuListComponent,
+    HeaderComponent
   ],
   imports: [
+    FlexLayoutModule,
     BrowserModule,
     AppRoutingModule,
-
     provideFirebaseApp(()=> initializeApp(environment.firebase.config)),
     provideFirestore(()=> getFirestore()),
     provideStorage(()=>getStorage()),
@@ -55,9 +55,8 @@ const StoreDevTools = !environment.production ? StoreDevtoolsModule.instrument({
 
     AngularFireModule.initializeApp(environment.firebase.config),
     AngularFireStorageModule,
-    AngularFirestoreModule,
     AngularFireAuthModule,
-
+    AngularFirestoreModule,
     IndicatorsModule,
     BrowserAnimationsModule,
     PopupsModule,
@@ -65,9 +64,8 @@ const StoreDevTools = !environment.production ? StoreDevtoolsModule.instrument({
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule,
-    FlexLayoutModule,
     MatListModule,
+    MatButtonModule,
     StoreDevTools,
     StoreModule.forRoot(reducers, {
       runtimeChecks: {
@@ -77,8 +75,8 @@ const StoreDevTools = !environment.production ? StoreDevtoolsModule.instrument({
     }),
     EffectsModule.forRoot(effects),
     HttpClientModule,
-    CarouselModule
 
+    CarouselModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
@@ -86,3 +84,5 @@ const StoreDevTools = !environment.production ? StoreDevtoolsModule.instrument({
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

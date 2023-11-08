@@ -40,7 +40,7 @@ export class AppComponent implements OnInit{
   }
 
   onFilesChanged(urls: string | string[]) : void {
-    console.log('urls', urls);
+    console.log(urls);
 
   }
 
@@ -57,6 +57,5 @@ export class AppComponent implements OnInit{
     this.store.dispatch(new fromUser.SignOut());
     this.router.navigate(['/auth/login']);
   }
-
 
 }

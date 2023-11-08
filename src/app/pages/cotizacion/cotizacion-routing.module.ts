@@ -11,6 +11,11 @@ const routes: Routes = [
     path: 'list',
     loadChildren: () => import('./pages/cotizacion-list/cotizacion-list.module').then(m=>m.CotizacionListModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'list'
   }
 ];
 

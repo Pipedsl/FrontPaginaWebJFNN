@@ -13,7 +13,7 @@
     <span class="navegacion-list-label">Inicio Sesión</span>
   </a>
   <a
-    *ngIf="!isAuthorized"
+    *ngIf="isAuthorized"
     mat-list-item
     (click)="closeMenu()"
     routerLink="auth/registration"
@@ -32,7 +32,7 @@
   </a>
 
   <a
-    *ngIf="!isAuthorized"
+    *ngIf="isAuthorized"
     mat-list-item
     (click)="closeMenu()"
     routerLink="cotizacion/list"
@@ -46,27 +46,27 @@
     <span class="navegacion-list-label">Contacto</span>
   </a>
 
-    <a *ngIf="!isAuthorized" mat-list-item (click)="closeMenu()" routerLink="contacto/list"> <!--Recordar cambiar a authorizado -->
+    <a *ngIf="isAuthorized" mat-list-item (click)="closeMenu()" routerLink="contacto/list"> <!--Recordar cambiar a authorizado -->
     <mat-icon>contact_support</mat-icon>
     <span class="navegacion-list-label">Lista Contacto</span>
   </a>
 
-  <a *ngIf="!isAuthorized" mat-list-item (click)="closeMenu()" routerLink="static/nosotros">
+  <a mat-list-item (click)="closeMenu()" routerLink="static/nosotros">
     <mat-icon>build_circle</mat-icon>
     <span class="navegacion-list-label">Nosotros</span>
   </a>
 
-  <a *ngIf="!isAuthorized" mat-list-item (click)="closeMenu()" routerLink="static/marcas">
+  <a mat-list-item (click)="closeMenu()" routerLink="static/marcas">
     <mat-icon>directions_car</mat-icon>
     <span class="navegacion-list-label">Marcas</span>
   </a>
 
-  <a *ngIf="!isAuthorized" mat-list-item (click)="closeMenu()" routerLink="static/sucursal">
+  <a mat-list-item (click)="closeMenu()" routerLink="static/sucursal">
     <mat-icon>location_on</mat-icon>
     <span class="navegacion-list-label">Sucursal</span>
   </a>
 
-  <a *ngIf="!isAuthorized" mat-list-item (click)="closeMenu()" routerLink="static/politicas">
+  <a mat-list-item (click)="closeMenu()" routerLink="static/politicas">
     <mat-icon>policy</mat-icon>
     <span class="navegacion-list-label">Politicas</span>
   </a>

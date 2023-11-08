@@ -6,10 +6,12 @@ describe('EntityPhotoComponent', () => {
   let component: EntityPhotoComponent;
   let fixture: ComponentFixture<EntityPhotoComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [EntityPhotoComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ EntityPhotoComponent ]
+    })
+    .compileComponents();
+
     fixture = TestBed.createComponent(EntityPhotoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

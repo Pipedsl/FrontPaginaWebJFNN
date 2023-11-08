@@ -11,6 +11,11 @@ const routes: Routes = [
     path: 'list',
     loadChildren: () => import ('./pages/contacto-list/contacto-list.module').then(m=> m.ContactoListModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'list'
   }
 ];
 

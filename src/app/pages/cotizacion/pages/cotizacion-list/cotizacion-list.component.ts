@@ -11,7 +11,7 @@ import { Store, select } from '@ngrx/store';
   styleUrls: ['./cotizacion-list.component.scss']
 })
 export class CotizacionListComponent implements OnInit {
-  cotizaciones$ ! : Observable<CotizacionResponse []| null>
+  cotizaciones$ ! : Observable<CotizacionResponse[]| null>
   loading$ ! : Observable<boolean | null>
 
   fotoDefault : string = "#"

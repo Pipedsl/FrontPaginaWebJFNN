@@ -3,7 +3,6 @@ import { getCotizacionState, CotizacionState } from '../index';
 
 import { ListState } from "./save.reducer";
 
-
 export const getListState = createSelector(
   getCotizacionState,
   (state: CotizacionState ) => state.list

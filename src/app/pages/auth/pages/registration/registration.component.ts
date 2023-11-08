@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit{
   loading$ ! : Observable<boolean | null>;
 
   constructor(
@@ -25,9 +25,9 @@ export class RegistrationComponent {
 
     if(form.valid){
       const userCreateRequest : fromUser.UserCreateRequest = {
-        first_name: form.value.nombre,
-        last_name: form.value.apellido,
-        phone: form.value.telefono,
+        nombre: form.value.nombre,
+        apellido: form.value.apellidos,
+        telefono: form.value.telefono,
         username: form.value.username,
         email : form.value.email,
         password: form.value.password

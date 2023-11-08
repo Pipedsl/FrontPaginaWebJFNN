@@ -13,7 +13,7 @@ export interface DialogData {
   styleUrls: ['./files-upload.component.scss']
 })
 export class FilesUploadComponent implements OnInit{
-  isHovering ?: boolean;
+  isHovering !: boolean;
 
   files : File[] = [];
   imageFile !: File;
@@ -51,6 +51,11 @@ export class FilesUploadComponent implements OnInit{
     if(this.data.crop && files.length>1){
       this.isError = true;
       return
+    }
+
+    if(this.data.crop && files.length === 1 && files.item(0)?.type.split('/')[0] === 'image') {
+      this.imageFile = files.item(0) as File;
+      return;
     }
 
     for(let i=0; i < files.length; i++){
